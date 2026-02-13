@@ -21,3 +21,5 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 eval "$(starship init bash)"
+
+fastfetch
