@@ -4,6 +4,7 @@
 ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white)
 ![Bash](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 ![Starship](https://img.shields.io/badge/STARSHIP-dd0b78?style=for-the-badge&logo=Starship&logoColor=white)
+![Fastfetch](https://img.shields.io/badge/Fastfetch-38;2;118;159;240?style=for-the-badge&logo=linux&logoColor=white)
 
 ## Description
 
@@ -13,6 +14,7 @@ A personal collection of dotfiles to help set up and maintain a consistent devel
 
 - **Bash** - Customized shell setup
 - **Starship** — **Tokyo Night** prompt theme, customized with the Arch Linux logo (``) and a matching blue color palette
+- **Fastfetch** — Minimalist system information display featuring custom ASCII art and a `#769ff0` color theme
 
 ## Requirements
 
