@@ -1,0 +1,4 @@
+google-chrome
+maliit-keyboard
+visual-studio-code-bin
+zoom

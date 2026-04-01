@@ -20,6 +20,7 @@ btrfs-progs
 cantarell-fonts
 cmake
 cryptsetup
+delve
 device-mapper
 diffutils
 discord
@@ -63,10 +64,10 @@ firefox
 firewalld
 flatpak
 fwupd
+gimp
 git
 glances
 go
-google-chrome
 gradle
 grub
 gst-libav
@@ -89,7 +90,6 @@ kate
 kcalc
 kde-cli-tools
 kde-gtk-config
-kdeconnect
 kdegraphics-thumbnailers
 kdenetwork-filesharing
 kdenlive
@@ -123,7 +123,6 @@ logrotate
 lsb-release
 lsscsi
 lvm2
-maliit-keyboard
 man-db
 man-pages
 mdadm
@@ -182,6 +181,7 @@ python-defusedxml
 python-packaging
 python-pyqt6
 qemu-base
+qemu-desktop
 qt6-imageformats
 rebuild-detector
 reflector
@@ -206,6 +206,7 @@ tk
 tldr
 tlp
 traceroute
+tree
 ttf-bitstream-vera
 ttf-dejavu
 ttf-liberation
@@ -217,7 +218,7 @@ upower
 usb_modeswitch
 usbutils
 v4l2loopback-dkms
-visual-studio-code-bin
+virt-manager
 welcome
 wget
 which
@@ -242,4 +243,3 @@ xsettingsd
 xterm
 yay
 yt-dlp
-zoom
