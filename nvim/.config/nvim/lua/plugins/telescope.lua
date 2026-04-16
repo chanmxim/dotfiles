@@ -1,8 +1,12 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    lazy = false,
     version = '*',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-ui-select.nvim',
+    },
     config = function()
       local builtin = require('telescope.builtin')
 
@@ -10,6 +14,16 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help Tags' })
+
+      require("telescope").setup({
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown({})
+          }
+        }
+      })
+
+      require("telescope").load_extension("ui-select")
     end
   }
 }
