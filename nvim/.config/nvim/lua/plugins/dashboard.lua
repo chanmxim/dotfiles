@@ -3,10 +3,11 @@ return {
 	event = "VimEnter",
 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	config = function()
-		vim.api.nvim_set_hl(0, "DashboardHeader", { link = "Keyword" }) -- (Logo)
-		vim.api.nvim_set_hl(0, "DashboardDesc", { link = "Keyword" }) -- (Text)
-		vim.api.nvim_set_hl(0, "DashboardKey", { link = "Keyword" }) -- (Brackets [f])
-		vim.api.nvim_set_hl(0, "DashboardIcon", { link = "Keyword" }) -- (Icons)
+		vim.api.nvim_set_hl(0, "DashboardHeader", { link = "Function" })
+		vim.api.nvim_set_hl(0, "DashboardDesc", { link = "DashboardHeader" })
+		vim.api.nvim_set_hl(0, "DashboardKey", { link = "DashboardHeader" })
+		vim.api.nvim_set_hl(0, "DashboardIcon", { link = "DashboardHeader" })
+		vim.api.nvim_set_hl(0, "DashboardFooter", { link = "DashboardHeader" })
 
 		local logo = [[
      ██████╗ ██╗  ██╗ █████╗ ███╗   ██╗    ██╗   ██╗██╗    ██╗██╗   ██╗

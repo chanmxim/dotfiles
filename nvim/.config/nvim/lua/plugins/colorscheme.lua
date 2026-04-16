@@ -28,7 +28,7 @@ return {
 					MatchParen = { fg = colors.crust, bg = colors.mauve, style = { "bold" } },
 
 					-- FLOATING WINDOWS (Telescope)
-					FloatBorder = { fg = colors.mauve, bg = colors.mantle },
+					-- FloatBorder = { fg = colors.mauve, bg = colors.mantle },
 				}
 			end,
 		},
