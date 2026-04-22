@@ -17,6 +17,8 @@ return {
 				},
 				lualine = true,
 				which_key = true,
+				dashboard = true,
+				bufferline = true,
 			},
 			custom_highlights = function(colors)
 				return {
