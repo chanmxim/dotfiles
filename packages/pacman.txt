@@ -11,6 +11,7 @@ b43-fwcutter
 base
 base-devel
 bash-completion
+bash-language-server
 bind
 bluedevil
 bluez
@@ -178,6 +179,7 @@ plasma-x11-session
 plocate
 poppler-glib
 powerdevil
+prettier
 print-manager
 pv
 pyright
@@ -202,6 +204,7 @@ sof-firmware
 spectacle
 starship
 stow
+stylua
 sudo
 sysfsutils
 systemd-sysvcompat
@@ -211,6 +214,7 @@ timeshift
 tk
 tldr
 tlp
+tmux
 traceroute
 tree
 ttf-bitstream-vera
@@ -226,6 +230,8 @@ usb_modeswitch
 usbutils
 v4l2loopback-dkms
 virt-manager
+vscode-css-languageserver
+vscode-html-languageserver
 welcome
 wget
 which
