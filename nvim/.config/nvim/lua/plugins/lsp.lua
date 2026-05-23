@@ -7,10 +7,22 @@ return {
 		-- Inject autocomplete globally
 		vim.lsp.config("*", { capabilities = capabilities })
 
+		-- Go
 		vim.lsp.config("gopls", {
 			settings = {
 				gopls = {
 					semanticTokens = true,
+				},
+			},
+		})
+
+		-- Lua
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" }, -- Stop annoying "Undefined global 'vim'" warnings
+					},
 				},
 			},
 		})
@@ -34,6 +46,7 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
 				local opts = { buffer = args.buf }
+
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -41,6 +54,9 @@ return {
 				vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
 				vim.keymap.set("n", "<leader>d", function()
 					require("telescope.builtin").diagnostics({ bufnr = 0 })
+				end, opts)
+				vim.keymap.set("n", "gr", function()
+					require("telescope.builtin").lsp_references()
 				end, opts)
 			end,
 		})

@@ -29,6 +29,8 @@ return {
 					-- BRACKETS
 					MatchParen = { fg = colors.crust, bg = colors.mauve, style = { "bold" } },
 
+					DiagnosticUnnecessary = { fg = colors.overlay0, style = { "undercurl" } },
+
 					-- FLOATING WINDOWS (Telescope)
 					-- FloatBorder = { fg = colors.mauve, bg = colors.mantle },
 				}
