@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Disable XOFF flow control (for tmux prefix) 
+stty -ixon
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1="\[\033[0;38;5;54m\]\h:\[\033[0;38;5;54m\]\w \[\033[0;38;5;55m\]\u\[\033[0m\]\n\$ "
@@ -29,3 +32,7 @@ export PATH="$PATH:$GOPATH/bin"
 eval "$(starship init bash)"
 
 fastfetch
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
