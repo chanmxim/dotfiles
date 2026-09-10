@@ -36,6 +36,7 @@ return {
 			"html",
 			"cssls",
 			"bashls",
+			"clangd",
 		}
 
 		for _, server in ipairs(servers) do
