@@ -4,6 +4,9 @@ return {
 	config = function()
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+		-- Stop sending snippet placeholders
+		capabilities.textDocument.completion.completionItem.snippetSupport = false
+
 		-- Inject autocomplete globally
 		vim.lsp.config("*", { capabilities = capabilities })
 
