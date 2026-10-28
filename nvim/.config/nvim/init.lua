@@ -9,6 +9,7 @@ vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.showbreak = "↪"
 vim.opt.termguicolors = true
+vim.opt.laststatus = 3
 
 vim.g.have_nerd_font = true
 

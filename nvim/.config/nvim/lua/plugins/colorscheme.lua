@@ -27,7 +27,8 @@ return {
 					CursorLineNr = { fg = colors.mauve, style = { "bold" } },
 
 					-- BRACKETS
-					MatchParen = { fg = colors.crust, bg = colors.mauve, style = { "bold" } },
+					-- MatchParen = { fg = colors.crust, bg = colors.mauve, style = { "bold" } },
+          MatchParen = { fg = colors.crust, bg = colors.blue, style = { "bold" } },
 
 					DiagnosticUnnecessary = { fg = colors.overlay0, style = { "undercurl" } },
 
