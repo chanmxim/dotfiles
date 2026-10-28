@@ -3,6 +3,7 @@
 ![License](https://img.shields.io/badge/License-MIT-000000?style=for-the-badge&logo=opensourceinitiative&logoColor=white)
 ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white)
 ![Hyprland](https://img.shields.io/badge/Hyprland-00A79D?style=for-the-badge&logo=hyprland&logoColor=white)
+![Kitty](https://img.shields.io/badge/Kitty-393939?style=for-the-badge&logo=terminal&logoColor=white)
 ![Neovim](https://img.shields.io/badge/NeoVim-57A143?style=for-the-badge&logo=neovim&logoColor=white)
 ![Tmux](https://img.shields.io/badge/Tmux-1TBS?style=for-the-badge&logo=tmux&logoColor=white)
 ![Bash](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
@@ -17,6 +18,7 @@ A personal collection of dotfiles to help set up and maintain a consistent devel
 ## Features
 
 - **Hyprland** — Dynamic tiling Wayland compositor setup with custom keybindings, window rules, and animations
+- **Kitty** — GPU-accelerated terminal emulator configured with custom fonts and theming to match the system aesthetic
 - **Neovim** — Custom Lua configuration using `lazy.nvim`
 - **Tmux** - Multiplexer setup featuring a custom Starship-themed status bar
 - **Bash** - Customized shell setup
