@@ -1,0 +1,296 @@
+/*****----- Configuration -----*****/
+configuration {
+    modi:                       "drun,filebrowser";
+    show-icons:                 true; /* Set to false to hide app icons */
+    display-drun:               "";
+    display-filebrowser:        "";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
+    
+    /* Uncomment and change the line below to set a specific font */
+    /* font: "MesloLGS Nerd Font 13"; */
+}
+
+/*****----- Global Properties -----*****/
+* {
+    /* 
+     * --- COLOR PALETTE (Tokyo Night) --- 
+     * Note on Opacity: 
+     * The 'CC' at the end of the background hex codes means 80% opacity.
+     * Change 'CC' to 'FF' for solid colors, or '80' for 50% transparency. 
+     */
+    background:                  #1a1b26CC; /* Main background color (Kitty bg) */
+    background-alt:              #283457CC; /* Lighter background for alternate rows/search bar */
+    foreground:                  #c0caf5;   /* Main text color */
+    
+    /* --- ACCENT COLORS --- */
+    selected:                    #7aa2f7;   /* The color of the currently highlighted item (Blue) */
+    active:                      #9ece6a;   /* The color for active states (Green) */
+    urgent:                      #f7768e;   /* The color for urgent states (Red) */
+
+    /* These variables apply the colors above to specific UI elements */
+    border-colour:               var(selected); /* Currently uses the blue accent for the border */
+    handle-colour:               var(selected); /* Scrollbar handle color */
+    
+    /* Mapping semantic variables to the palette above */
+    background-colour:           var(background);
+    foreground-colour:           var(foreground);
+    alternate-background:        var(background-alt);
+    normal-background:           var(background);
+    normal-foreground:           var(foreground);
+    urgent-background:           var(urgent);
+    urgent-foreground:           var(background);
+    active-background:           var(active);
+    active-foreground:           var(background);
+    selected-normal-background:  var(selected);
+    selected-normal-foreground:  var(background);
+    selected-urgent-background:  var(active);
+    selected-urgent-foreground:  var(background);
+    selected-active-background:  var(urgent);
+    selected-active-foreground:  var(background);
+    alternate-normal-background: var(background);
+    alternate-normal-foreground: var(foreground);
+    alternate-urgent-background: var(urgent);
+    alternate-urgent-foreground: var(background);
+    alternate-active-background: var(active);
+    alternate-active-foreground: var(background);
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real"; /* Tells Rofi to use a compositor (like Hyprland) for blur/transparency */
+    location:                    center; /* Where the window spawns on screen */
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       600px;  /* Increase or decrease to change the width of the Rofi menu */
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* --- WINDOW BORDERS (Matches Hyprland settings) --- */
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      1px solid; /* Matches 'border_size = 1' in Hyprland */
+    border-radius:               10px;      /* Matches 'rounding = 10' in Hyprland */
+    border-color:                @border-colour; /* Uses the 'selected' blue color from above */
+    
+    cursor:                      "default";
+    background-color:            @background-colour;
+}
+
+/*****----- Main Box -----*****/
+/* This is the container that holds the search bar and the list of apps */
+mainbox {
+    enabled:                     true;
+    spacing:                     15px;  /* Space between the search bar and the app list */
+    margin:                      0px;
+    padding:                     30px;  /* Inner padding of the entire Rofi window */
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    border-color:                @border-colour;
+    background-color:            transparent;
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+/*****----- Inputbar (Search Bar) -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @border-colour;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    children:                    [ "textbox-prompt-colon", "entry", "mode-switcher" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    padding:                     5px 0px;
+    expand:                      false;
+    str:                         ""; /* The magnifying glass icon */
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    padding:                     5px 0px;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search..."; /* Default text in the search bar */
+    placeholder-color:           inherit;
+}
+
+/* These specific elements handle displaying rows/counts, usually hidden in this style */
+num-filtered-rows { enabled: true; expand: false; background-color: inherit; text-color: inherit; }
+textbox-num-sep { enabled: true; expand: false; str: "/"; background-color: inherit; text-color: inherit; }
+num-rows { enabled: true; expand: false; background-color: inherit; text-color: inherit; }
+case-indicator { enabled: true; background-color: inherit; text-color: inherit; }
+
+/*****----- Listview (The App List) -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;     /* Change to 2 or 3 to show apps in a grid */
+    lines:                       8;     /* The maximum number of apps to show before scrolling */
+    cycle:                       true;  /* When hitting down on the last item, jump to the top */
+    dynamic:                     true;  /* Automatically shrink the window if there are fewer than 8 items */
+    scrollbar:                   false;  /* Set to false to hide the scrollbar */
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     5px;   /* Space between each individual app in the list */
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @border-colour;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    cursor:                      "default";
+}
+scrollbar {
+    handle-width:                5px ;  /* Thickness of the scrollbar */
+    handle-color:                @handle-colour; /* Color of the scrollbar (Blue) */
+    border-radius:               10px;
+    background-color:            @alternate-background; /* Track color */
+}
+
+/*****----- Elements (Individual App Rows) -----*****/
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     5px 10px;  /* Padding inside the highlight box of an app */
+    border:                      0px solid;
+    border-radius:               10px;      /* Rounds the corners of the highlighted selection box */
+    border-color:                @border-colour;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    cursor:                      pointer;
+}
+
+/* States for the individual app rows */
+element normal.normal {
+    // background-color:            var(normal-background);
+    text-color:                  var(normal-foreground);
+}
+element normal.urgent {
+    // background-color:            var(urgent-background);
+    text-color:                  var(urgent-foreground);
+}
+element normal.active {
+    // background-color:            var(active-background);
+    text-color:                  var(active-foreground);
+}
+/* When you use arrow keys to select an app */
+element selected.normal {
+    background-color:            var(selected-normal-background); /* Changes row background to solid Blue */
+    text-color:                  var(selected-normal-foreground); /* Changes row text to Dark Background */
+}
+element selected.urgent {
+    background-color:            var(selected-urgent-background);
+    text-color:                  var(selected-urgent-foreground);
+}
+element selected.active {
+    background-color:            var(selected-active-background);
+    text-color:                  var(selected-active-foreground);
+}
+element alternate.normal {
+    // background-color:            var(alternate-normal-background);
+    text-color:                  var(alternate-normal-foreground);
+}
+element alternate.urgent {
+    // background-color:            var(alternate-urgent-background);
+    text-color:                  var(alternate-urgent-foreground);
+}
+element alternate.active {
+    // background-color:            var(alternate-active-background);
+    text-color:                  var(alternate-active-foreground);
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        24px; /* Icon size - increase if you want larger app icons */
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Mode Switcher (Bottom tabs like Drun, Run, Window) -----*****/
+mode-switcher{
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @border-colour;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+}
+button {
+    padding:                     5px 15px 5px 9px;
+    border:                      0px solid;
+    border-radius:               10px;
+    border-color:                @border-colour;
+    background-color:            @alternate-background;
+    text-color:                  inherit;
+    cursor:                      pointer;
+
+    font:                        "MesloLGS Nerd Font 14";
+}
+button selected {
+    background-color:            var(selected-normal-background);
+    text-color:                  var(selected-normal-foreground);
+}
+
+/*****----- Message & Errors -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    border-color:                @border-colour;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+}
+textbox {
+    padding:                     8px 10px;
+    border:                      0px solid;
+    border-radius:               10px;
+    border-color:                @border-colour;
+    background-color:            @alternate-background;
+    text-color:                  @foreground-colour;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   none;
+    placeholder-color:           @foreground-colour;
+    blink:                       true;
+    markup:                      true;
+}
+error-message {
+    padding:                     10px;
+    border:                      2px solid;
+    border-radius:               10px;
+    border-color:                @border-colour;
+    background-color:            @background-colour;
+    text-color:                  @foreground-colour;
+}
