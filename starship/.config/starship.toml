@@ -68,3 +68,4 @@ format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 [character]
 success_symbol = "[❯](bold #a3aed2)"
 error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold blue)"
