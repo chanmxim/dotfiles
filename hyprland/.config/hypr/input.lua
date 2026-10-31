@@ -7,7 +7,7 @@ local rofi_theme = "~/.config/rofi/launchers/type-1/style-5.rasi"
 
 local terminal    = "kitty"
 local fileManager = "dolphin"
-local menu       = rofi_cmd .. " " .. rofi_mode .. " -theme " .. rofi_theme
+local menu       = "pkill rofi || " .. rofi_cmd .. " " .. rofi_mode .. " -theme " .. rofi_theme
 
 ---------------
 ---- INPUT ----
