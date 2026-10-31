@@ -31,7 +31,7 @@ A personal collection of dotfiles to help set up and maintain a consistent devel
 ## Requirements
 
 - **GNU Stow** — Used to symlink these dotfiles into place
-- **MesloLGS Nerd Font** — Required to display the prompt icons correctly
+- **JetBrainsMono Nerd Font** — Required to display the prompt icons correctly
 
 ## Package Management
 
