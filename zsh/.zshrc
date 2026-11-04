@@ -8,7 +8,7 @@ SAVEHIST=100
 
 # Options
 setopt auto_cd # Enable auto cd
-setopt correct # Enable autocorrect
+# setopt correct # Enable autocorrect
 # export LISTMAX=9999 # Don't ask permission to show large autocomplete list
 
 # -------------------------------------
@@ -48,7 +48,7 @@ bindkey -M menuselect 'l' vi-forward-char
 # -------------------------------------
 # Aliases 
 # -------------------------------------
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls -l --color=auto --group-directories-first'
 
 # -------------------------------------
 # Prompt & Plugins
