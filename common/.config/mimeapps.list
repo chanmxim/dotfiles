@@ -1,0 +1,13 @@
+[Default Applications]
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
+image/png=org.gnome.Loupe.desktop
+image/jpeg=org.gnome.Loupe.desktop
+image/jpg=org.gnome.Loupe.desktop
+image/webp=org.gnome.Loupe.desktop
+image/gif=org.gnome.Loupe.desktop
+image/svg+xml=org.gnome.Loupe.desktop
