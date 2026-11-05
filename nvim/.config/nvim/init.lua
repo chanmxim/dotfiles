@@ -15,6 +15,7 @@ vim.g.have_nerd_font = true
 
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 require("config.lazy")
 require("scrolleof").setup()

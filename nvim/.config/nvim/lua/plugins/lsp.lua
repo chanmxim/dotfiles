@@ -38,6 +38,7 @@ return {
 			"rust_analyzer",
 			"html",
 			"cssls",
+      "jsonls",
 			"bashls",
 			"clangd",
 		}
