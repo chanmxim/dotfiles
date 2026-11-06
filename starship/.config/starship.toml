@@ -1,71 +1,75 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+# TODO: fix the bug where the top bracket becomes red and the bottom still white on empty input(i.e. just press "enter"). Supposed to be all red
+
+# Add to .zshrc to make it work with vim mode
+# # Export Zsh's Vim mode state so Starship custom modules can read it
+# function zle-keymap-select {
+#   export STARSHIP_KEYMAP="$KEYMAP"
+#   zle reset-prompt
+# }
+# zle -N zle-keymap-select
+#
+# # Ensure the prompt resets to the Insert mode color on a new line
+# function zle-line-init {
+#   export STARSHIP_KEYMAP="main"
+#   zle reset-prompt
+# }
+# zle -N zle-line-init
+#
+# # Capture exit status for Starship custom modules
+# capture_starship_status() {
+#   export STARSHIP_PREV_STATUS=$?
+# }
+# # Prepend it to run before the prompt is drawn
+# precmd_functions=(capture_starship_status ${precmd_functions[@]})
+#
+
+add_newline = true
+palette = "tokyonight"
 
 format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#769ff0 fg:#a3aed2)\
-$directory\
-[](fg:#769ff0 bg:#394260)\
-$git_branch\
-$git_status\
-[](fg:#394260 bg:#212736)\
-$nodejs\
-$rust\
-$golang\
-$php\
-[](fg:#212736 bg:#1d2230)\
-$time\
-[ ](fg:#1d2230)\
-\n$character"""
+${custom.top_insert}${custom.top_error}${custom.top_normal}$directory$git_branch
+$character"""
+
+[palettes.tokyonight]
+light_blue_white = "#c0caf5"
+blue = "#7aa2f7"
+purple = "#bb9af7"
+red = "#f7768e"
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
-format = "[ $path ]($style)"
+style = "bold blue"
+format = "[$path]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-
 [git_branch]
-symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
-
-[git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[php]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[time]
-disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+symbol = " "
+style = "bold light_blue_white"
+format = "[ ❯ ](bold light_blue_white)[$symbol$branch]($style) "
 
 [character]
-success_symbol = "[❯](bold #a3aed2)"
-error_symbol = "[❯](bold red)"
-vimcmd_symbol = "[❮](bold blue)"
+success_symbol = "[╰─](bold light_blue_white)"
+error_symbol = "[╰─](bold light_blue_white)"
+vimcmd_symbol = "[╰─](bold blue)"
+# success_symbol = "[╰─○](bold light_blue_white)"
+# error_symbol = "[╰─○](bold red)"
+# vimcmd_symbol = "[╰─○](bold blue)"
+# success_symbol = "[╰─●](bold light_blue_white)"
+# error_symbol = "[╰─●](bold red)"
+# vimcmd_symbol = "[╰─●](bold blue)"
+
+# --- Custom Modules for the Top Brace ---
+[custom.top_insert]
+command = 'echo -n "╭"'
+when = 'test "$STARSHIP_KEYMAP" != "vicmd" && test "${STARSHIP_PREV_STATUS:-0}" = "0"'
+format = "[$output ](bold light_blue_white)"
+
+[custom.top_normal]
+command = 'echo -n "╭"'
+when = 'test "$STARSHIP_KEYMAP" = "vicmd"'
+format = "[$output ](bold blue)"
+
+[custom.top_error]
+command = 'echo -n "╭"'
+when = 'test "$STARSHIP_KEYMAP" != "vicmd" && test "${STARSHIP_PREV_STATUS:-0}" != "0"'
+format = "[$output ](bold light_blue_white)"

@@ -45,6 +45,10 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
+# Vim keybinds
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
+
 # -------------------------------------
 # Aliases 
 # -------------------------------------
@@ -58,3 +62,24 @@ eval "$(starship init zsh)"
 
 # Enable zsh-syntax-highlighting
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Export Zsh's Vim mode state so Starship custom modules can read it
+function zle-keymap-select {
+  export STARSHIP_KEYMAP="$KEYMAP"
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+# Ensure the prompt resets to the Insert mode color on a new line
+function zle-line-init {
+  export STARSHIP_KEYMAP="main"
+  zle reset-prompt
+}
+zle -N zle-line-init
+
+# Capture exit status for Starship custom modules
+capture_starship_status() {
+  export STARSHIP_PREV_STATUS=$?
+}
+# Prepend it to run before the prompt is drawn
+precmd_functions=(capture_starship_status ${precmd_functions[@]})
