@@ -10,6 +10,8 @@ vim.opt.breakindent = true
 vim.opt.showbreak = "↪"
 vim.opt.termguicolors = true
 vim.opt.laststatus = 3
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
 
 vim.g.have_nerd_font = true
 
