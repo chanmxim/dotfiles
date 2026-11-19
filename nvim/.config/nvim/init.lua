@@ -6,6 +6,7 @@ vim.opt.scrolloff = 5
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = true
+vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.showbreak = "↪"
 vim.opt.termguicolors = true
