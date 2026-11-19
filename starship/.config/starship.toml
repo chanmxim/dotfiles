@@ -27,7 +27,7 @@ add_newline = true
 palette = "tokyonight"
 
 format = """
-${custom.top_insert}${custom.top_error}${custom.top_normal}$directory$git_branch
+${custom.top_insert}${custom.top_error}${custom.top_normal}$directory $git_branch
 $character"""
 
 [palettes.tokyonight]
@@ -44,8 +44,8 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = " "
-style = "bold light_blue_white"
-format = "[ ❯ ](bold light_blue_white)[$symbol$branch]($style) "
+style = "bold purple"
+format = "[$symbol$branch]($style) "
 
 [character]
 success_symbol = "[╰─](bold light_blue_white)"
